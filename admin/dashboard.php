@@ -182,176 +182,8 @@ $datos_ms = $stmt->fetchAll();
 require_once '../includes/header.php';
 ?>
 
-<style>
-.dashboard-container {
-    max-width: 1400px;
-    margin: 0 auto;
-}
-
-.alertas-container {
-    margin-bottom: 25px;
-}
-
-.alerta {
-    background: #fff3cd;
-    border-left: 4px solid #ffc107;
-    padding: 15px 20px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.alerta.critica {
-    background: #f8d7da;
-    border-left-color: #dc3545;
-}
-
-.alerta .icono {
-    font-size: 1.5em;
-}
-
-.alerta .contenido {
-    flex: 1;
-}
-
-.alerta strong {
-    display: block;
-    margin-bottom: 3px;
-}
-
-.alerta a {
-    color: inherit;
-    text-decoration: underline;
-    font-weight: bold;
-}
-
-.indicadores {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    margin-bottom: 30px;
-}
-
-.indicador {
-    background: white;
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    text-align: center;
-    transition: transform 0.3s;
-}
-
-.indicador:hover {
-    transform: translateY(-5px);
-}
-
-.indicador .numero {
-    font-size: 2.5em;
-    font-weight: bold;
-    color: #2c5530;
-    margin: 10px 0;
-}
-
-.indicador .etiqueta {
-    color: #666;
-    font-size: 0.9em;
-}
-
-.indicador .icono {
-    font-size: 2em;
-}
-
-.graficos {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-    gap: 20px;
-    margin-bottom: 30px;
-}
-
-.grafico-card {
-    background: white;
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    height: 350px; /* Altura fija para los gráficos */
-}
-
-.grafico-card h3 {
-    margin: 0 0 20px 0;
-    color: #2c5530;
-}
-
-.grafico-card canvas {
-    max-height: 280px; /* Limitar altura del canvas */
-}
-
-.tabla-card {
-    background: white;
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    margin-bottom: 20px;
-}
-
-.tabla-card h3 {
-    margin: 0 0 20px 0;
-    color: #2c5530;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-table th {
-    background: #f8f9fa;
-    padding: 12px;
-    text-align: left;
-    font-weight: bold;
-    border-bottom: 2px solid #dee2e6;
-}
-
-table td {
-    padding: 12px;
-    border-bottom: 1px solid #dee2e6;
-}
-
-table tr:hover {
-    background: #f8f9fa;
-}
-
-.badge {
-    padding: 4px 10px;
-    border-radius: 12px;
-    font-size: 0.85em;
-    font-weight: bold;
-}
-
-.badge-success {
-    background: #d4edda;
-    color: #155724;
-}
-
-.badge-warning {
-    background: #fff3cd;
-    color: #856404;
-}
-
-@media (max-width: 768px) {
-    .graficos {
-        grid-template-columns: 1fr;
-    }
-    
-    .indicadores {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-</style>
-
 <div class="dashboard-container">
-    <h1 style="margin-bottom: 20px;">📊 Dashboard - Panel de Control</h1>
+    <h1 class="titulo-dashboard">📊 Dashboard - Panel de Control</h1>
 
     <!-- ALERTAS -->
     <?php if ($lotes_sin_dieta > 0 || $ajustes_pendientes > 0 || $lotes_sin_alimentar > 0): ?>
@@ -393,39 +225,39 @@ table tr:hover {
     <!-- INDICADORES PRINCIPALES -->
     <div class="indicadores">
         <div class="indicador">
-            <div class="icono">🐮</div>
-            <div class="numero"><?php echo $total_lotes; ?></div>
-            <div class="etiqueta">Lotes Activos</div>
+            <div class="indicador-icono">🐮</div>
+            <div class="indicador-valor"><?php echo $total_lotes; ?></div>
+            <div class="indicador-label">Lotes Activos</div>
         </div>
 
         <div class="indicador">
-            <div class="icono">🐄</div>
-            <div class="numero"><?php echo number_format($total_animales); ?></div>
-            <div class="etiqueta">Animales en Feedlot</div>
+            <div class="indicador-icono">🐄</div>
+            <div class="indicador-valor"><?php echo number_format($total_animales); ?></div>
+            <div class="indicador-label">Animales en Feedlot</div>
         </div>
 
         <div class="indicador">
-            <div class="icono">🍽️</div>
-            <div class="numero"><?php echo $alimentaciones_hoy; ?></div>
-            <div class="etiqueta">Alimentaciones Hoy</div>
+            <div class="indicador-icono">🍽️</div>
+            <div class="indicador-valor"><?php echo $alimentaciones_hoy; ?></div>
+            <div class="indicador-label">Alimentaciones Hoy</div>
         </div>
 
         <div class="indicador">
-            <div class="icono">⚖️</div>
-            <div class="numero"><?php echo number_format($kg_hoy, 0); ?></div>
-            <div class="etiqueta">Kg Entregados Hoy</div>
+            <div class="indicador-icono">⚖️</div>
+            <div class="indicador-valor"><?php echo number_format($kg_hoy, 0); ?></div>
+            <div class="indicador-label">Kg Entregados Hoy</div>
         </div>
 
         <div class="indicador">
-            <div class="icono">📈</div>
-            <div class="numero"><?php echo number_format($adpv_promedio, 2); ?></div>
-            <div class="etiqueta">ADPV Promedio (kg/día)</div>
+            <div class="indicador-icono">📈</div>
+            <div class="indicador-valor"><?php echo number_format($adpv_promedio, 2); ?></div>
+            <div class="indicador-label">ADPV Promedio (kg/día)</div>
         </div>
 
         <div class="indicador">
-            <div class="icono">🌾</div>
-            <div class="numero"><?php echo number_format($cms_promedio, 2); ?></div>
-            <div class="etiqueta">CMS Promedio (kg/día)</div>
+            <div class="indicador-icono">🌾</div>
+            <div class="indicador-valor"><?php echo number_format($cms_promedio, 2); ?></div>
+            <div class="indicador-label">CMS Promedio (kg/día)</div>
         </div>
     </div>
 
@@ -473,7 +305,7 @@ table tr:hover {
                             <td>
                                 <?php if ($lote['ultimo_peso']): ?>
                                     <?php echo number_format($lote['ultimo_peso'], 0); ?> kg
-                                    <small style="color: #666;">(<?php echo date('d/m', strtotime($lote['fecha_peso'])); ?>)</small>
+                                    <small class="texto-secundario">(<?php echo date('d/m', strtotime($lote['fecha_peso'])); ?>)</small>
                                 <?php else: ?>
                                     -
                                 <?php endif; ?>
@@ -484,7 +316,7 @@ table tr:hover {
                 </tbody>
             </table>
         <?php else: ?>
-            <p style="text-align: center; padding: 20px; color: #666;">
+            <p class="sin-datos">
                 No hay lotes activos en este momento.
             </p>
         <?php endif; ?>
@@ -521,7 +353,7 @@ table tr:hover {
                 </tbody>
             </table>
         <?php else: ?>
-            <p style="text-align: center; padding: 20px; color: #666;">
+            <p class="sin-datos">
                 No hay alimentaciones registradas recientemente.
             </p>
         <?php endif; ?>

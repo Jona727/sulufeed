@@ -705,6 +705,123 @@ table tbody tr:hover {
 }
 
 /* ========================================
+   DASHBOARD
+======================================== */
+
+.dashboard-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.titulo-dashboard {
+    margin-bottom: 20px;
+}
+
+.alertas-container {
+    margin-bottom: 25px;
+}
+
+.alerta {
+    background: #fff3cd;
+    border-left: 4px solid #ffc107;
+    padding: 15px 20px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.alerta.critica {
+    background: #f8d7da;
+    border-left-color: #dc3545;
+}
+
+.alerta .icono {
+    font-size: 1.5em;
+}
+
+.alerta .contenido {
+    flex: 1;
+}
+
+.alerta strong {
+    display: block;
+    margin-bottom: 3px;
+}
+
+.alerta a {
+    color: inherit;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.indicadores {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.graficos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.grafico-card {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    height: 350px;
+}
+
+.grafico-card h3 {
+    margin: 0 0 20px 0;
+    color: #2c5530;
+}
+
+.grafico-card canvas {
+    max-height: 280px;
+}
+
+.tabla-card {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.tabla-card h3 {
+    margin: 0 0 20px 0;
+    color: #2c5530;
+}
+
+.badge {
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.85em;
+    font-weight: bold;
+}
+
+.badge-success {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge-warning {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.texto-secundario {
+    color: #666;
+}
+
+/* ========================================
    RESPONSIVE
 ======================================== */
 
@@ -758,6 +875,14 @@ table tbody tr:hover {
 
     .btn {
         width: 100%;
+    }
+
+    .graficos {
+        grid-template-columns: 1fr;
+    }
+
+    .indicadores {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
