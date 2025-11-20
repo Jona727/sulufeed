@@ -27,41 +27,88 @@ body {
 ======================================== */
 
 .sidebar {
-    width: 260px;
-    background: linear-gradient(180deg, #2c5530 0%, #1e3d22 100%);
-    color: white;
     position: fixed;
+    left: 0;
+    top: 0;
+    width: 260px;
     height: 100vh;
+    background: #1a3a1f;
+    color: white;
     overflow-y: auto;
-    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
     z-index: 1000;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
 }
 
 .sidebar-header {
-    padding: 1.5rem;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding: 25px 20px;
+    background: #2c5530;
     text-align: center;
+    border-bottom: 2px solid rgba(255,255,255,0.1);
 }
 
 .sidebar-logo {
-    font-size: 2rem;
-    margin-bottom: 0.3rem;
+    font-size: 3em;
+    margin-bottom: 10px;
 }
 
 .sidebar-title {
-    font-size: 1.3rem;
+    font-size: 1.5em;
     font-weight: bold;
     margin: 0;
 }
 
 .sidebar-subtitle {
-    font-size: 0.85rem;
+    font-size: 0.85em;
     opacity: 0.8;
-    margin: 0;
+    margin-top: 5px;
 }
 
 .sidebar-menu {
-    padding: 1rem 0;
+    padding: 20px 0;
+}
+
+.sidebar-menu ul {
+    list-style: none;
+}
+
+.sidebar-menu li a {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.sidebar-menu li a:hover {
+    background: rgba(255,255,255,0.1);
+    padding-left: 25px;
+}
+
+.menu-icono {
+    font-size: 1.3em;
+    margin-right: 12px;
+    width: 30px;
+    text-align: center;
+}
+
+.menu-texto {
+    font-size: 0.95em;
+}
+
+.menu-separador {
+    height: 1px;
+    background: rgba(255,255,255,0.1);
+    margin: 15px 20px;
+}
+
+.menu-titulo {
+    padding: 10px 20px;
+    font-size: 0.75em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.6;
+    font-weight: bold;
 }
 
 .menu-section {
@@ -116,26 +163,40 @@ body {
     position: absolute;
     bottom: 0;
     width: 100%;
-    padding: 1rem 1.5rem;
+    padding: 20px;
+    background: rgba(0,0,0,0.2);
     border-top: 1px solid rgba(255,255,255,0.1);
-    font-size: 0.85rem;
 }
 
 .user-info {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 10px;
 }
 
 .user-avatar {
-    width: 32px;
-    height: 32px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    background: rgba(255,255,255,0.2);
+    background: #2c5530;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.2rem;
+    font-size: 1.2em;
+}
+
+.user-details {
+    flex: 1;
+}
+
+.user-name {
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.user-role {
+    font-size: 0.75em;
+    opacity: 0.7;
 }
 
 /* ========================================
@@ -644,21 +705,52 @@ table tbody tr:hover {
 
 @media (max-width: 768px) {
     .sidebar {
-        width: 200px;
+        width: 70px;
     }
-    
+
+    .sidebar-title,
+    .sidebar-subtitle,
+    .menu-texto,
+    .menu-titulo,
+    .user-details {
+        display: none;
+    }
+
+    .sidebar-menu li a {
+        justify-content: center;
+        padding: 15px 10px;
+    }
+
+    .sidebar-menu li a:hover {
+        padding-left: 10px;
+    }
+
+    .menu-icono {
+        margin-right: 0;
+    }
+
     .main-wrapper {
-        margin-left: 200px;
+        margin-left: 70px;
     }
-    
+
+    .sidebar-footer {
+        padding: 10px;
+    }
+
+    .user-avatar {
+        width: 35px;
+        height: 35px;
+        font-size: 1em;
+    }
+
     .indicadores-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .btn-grupo {
         flex-direction: column;
     }
-    
+
     .btn {
         width: 100%;
     }
