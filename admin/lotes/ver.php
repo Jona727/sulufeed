@@ -134,36 +134,36 @@ include '../../includes/header.php';
 
 <!-- Información general del lote -->
 <div class="tarjeta">
-    <h2 style="color: #2c5530; margin-bottom: 1rem;">
+    <h2 class="seccion-titulo">
         <?php echo htmlspecialchars($lote['nombre']); ?>
         <?php if ($lote['activo']): ?>
-            <span class="estado estado-activo" style="font-size: 0.9rem; margin-left: 1rem;">Activo</span>
+            <span class="estado estado-activo estado-inline">Activo</span>
         <?php else: ?>
-            <span class="estado estado-inactivo" style="font-size: 0.9rem; margin-left: 1rem;">Inactivo</span>
+            <span class="estado estado-inactivo estado-inline">Inactivo</span>
         <?php endif; ?>
     </h2>
-    
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem;">
-        
+
+    <div class="info-grid">
+
         <div>
-            <small style="color: #666;">Campo:</small><br>
+            <small class="etiqueta-resumen">Campo:</small><br>
             <strong><?php echo htmlspecialchars($lote['campo_nombre']); ?></strong>
             <?php if (!empty($lote['campo_ubicacion'])): ?>
-                <br><small style="color: #999;"><?php echo htmlspecialchars($lote['campo_ubicacion']); ?></small>
+                <br><small class="info-pequeña"><?php echo htmlspecialchars($lote['campo_ubicacion']); ?></small>
             <?php endif; ?>
         </div>
-        
+
         <div>
-            <small style="color: #666;">Categoría:</small><br>
+            <small class="etiqueta-resumen">Categoría:</small><br>
             <strong><?php echo htmlspecialchars($lote['categoria']); ?></strong>
         </div>
-        
+
         <div>
-            <small style="color: #666;">Fecha de Inicio:</small><br>
+            <small class="etiqueta-resumen">Fecha de Inicio:</small><br>
             <strong><?php echo formatearFecha($lote['fecha_inicio']); ?></strong>
-            <br><small style="color: #999;"><?php echo $dias_engorde; ?> días en feedlot</small>
+            <br><small class="info-pequeña"><?php echo $dias_engorde; ?> días en feedlot</small>
         </div>
-        
+
     </div>
     
     <div class="btn-grupo">
@@ -175,14 +175,14 @@ include '../../includes/header.php';
 </div>
 
 <!-- Indicadores clave -->
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem;">
-    
+<div class="indicadores-grid-detalle">
+
     <div class="indicador">
         <div class="indicador-icono">🐄</div>
         <div class="indicador-valor"><?php echo $animales_presentes; ?></div>
         <div class="indicador-label">Animales Presentes</div>
         <?php if ($animales_presentes != $lote['cantidad_inicial']): ?>
-            <small style="color: #999;">Inicial: <?php echo $lote['cantidad_inicial']; ?></small>
+            <small class="info-pequeña">Inicial: <?php echo $lote['cantidad_inicial']; ?></small>
         <?php endif; ?>
     </div>
     
@@ -229,19 +229,19 @@ include '../../includes/header.php';
 <!-- Dieta vigente -->
 <div class="tarjeta">
     <h2 class="tarjeta-titulo">📋 Dieta Vigente</h2>
-    
+
     <?php if ($dieta_vigente): ?>
-        
-        <div style="display: flex; justify-content: space-between; align-items: center;">
+
+        <div class="dieta-header">
             <div>
-                <h3 style="color: #2c5530; margin-bottom: 0.5rem;">
+                <h3 class="seccion-titulo-small">
                     <?php echo htmlspecialchars($dieta_vigente['dieta_nombre']); ?>
                 </h3>
-                <small style="color: #666;">
+                <small class="etiqueta-resumen">
                     Asignada desde: <?php echo formatearFecha($dieta_vigente['fecha_desde']); ?>
                 </small>
             </div>
-            <a href="../dietas/ver.php?id=<?php echo $dieta_vigente['id_dieta']; ?>" 
+            <a href="../dietas/ver.php?id=<?php echo $dieta_vigente['id_dieta']; ?>"
                class="btn btn-secundario btn-pequeno">Ver Composición</a>
         </div>
         
@@ -325,15 +325,15 @@ include '../../includes/header.php';
                             <td><?php echo $alim['animales_presentes']; ?></td>
                             <td>
                                 <?php
-                                $color_sobra = '';
+                                $clase_sobra = '';
                                 switch($alim['sobrante_nivel']) {
-                                    case 'SIN_SOBRAS': $color_sobra = '#28a745'; break;
-                                    case 'POCAS_SOBRAS': $color_sobra = '#ffc107'; break;
-                                    case 'NORMAL': $color_sobra = '#17a2b8'; break;
-                                    case 'MUCHAS_SOBRAS': $color_sobra = '#dc3545'; break;
+                                    case 'SIN_SOBRAS': $clase_sobra = 'nivel-sin-sobras'; break;
+                                    case 'POCAS_SOBRAS': $clase_sobra = 'nivel-pocas-sobras'; break;
+                                    case 'NORMAL': $clase_sobra = 'nivel-normal'; break;
+                                    case 'MUCHAS_SOBRAS': $clase_sobra = 'nivel-muchas-sobras'; break;
                                 }
                                 ?>
-                                <span style="color: <?php echo $color_sobra; ?>; font-weight: 600;">
+                                <span class="<?php echo $clase_sobra; ?>">
                                     <?php echo str_replace('_', ' ', $alim['sobrante_nivel']); ?>
                                 </span>
                             </td>
@@ -374,22 +374,22 @@ include '../../includes/header.php';
                         <td><?php echo formatearFecha($mov['fecha']); ?></td>
                         <td>
                             <?php
-                            $color_mov = '';
+                            $clase_mov = '';
                             switch($mov['tipo_movimiento']) {
                                 case 'ENTRADA':
                                 case 'AJUSTE_POSITIVO':
-                                    $color_mov = '#28a745';
+                                    $clase_mov = 'movimiento-positivo';
                                     break;
                                 case 'SALIDA':
                                 case 'BAJA':
                                 case 'AJUSTE_NEGATIVO':
-                                    $color_mov = '#dc3545';
+                                    $clase_mov = 'movimiento-negativo';
                                     break;
                                 default:
-                                    $color_mov = '#17a2b8';
+                                    $clase_mov = 'movimiento-neutral';
                             }
                             ?>
-                            <span style="color: <?php echo $color_mov; ?>; font-weight: 600;">
+                            <span class="<?php echo $clase_mov; ?>">
                                 <?php echo str_replace('_', ' ', $mov['tipo_movimiento']); ?>
                             </span>
                         </td>

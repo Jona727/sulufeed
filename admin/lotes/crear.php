@@ -95,7 +95,7 @@ include '../../includes/header.php';
     <?php if (!empty($errores)): ?>
         <div class="mensaje mensaje-error">
             <strong>Se encontraron los siguientes errores:</strong>
-            <ul style="margin: 0.5rem 0 0 1.5rem;">
+            <ul class="mensaje-lista">
                 <?php foreach ($errores as $error): ?>
                     <li><?php echo $error; ?></li>
                 <?php endforeach; ?>
@@ -177,12 +177,12 @@ include '../../includes/header.php';
             <small>Cantidad de animales con la que comienza el lote.</small>
         </div>
         
-        <hr style="margin: 2rem 0; border: none; border-top: 2px solid #e9ecef;">
-        
-        <h3 style="color: #2c5530; margin-bottom: 1rem;">📋 Asignación de Dieta (Opcional)</h3>
-        
-        <div class="mensaje mensaje-info" style="margin-bottom: 1.5rem;">
-            ℹ️ Podés asignar una dieta ahora o hacerlo más tarde. 
+        <hr class="separador-horizontal">
+
+        <h3 class="seccion-titulo">📋 Asignación de Dieta (Opcional)</h3>
+
+        <div class="mensaje mensaje-info mb-1">
+            ℹ️ Podés asignar una dieta ahora o hacerlo más tarde.
             La dieta se asignará desde la fecha de inicio del lote.
         </div>
         
@@ -210,9 +210,9 @@ include '../../includes/header.php';
                 <a href="../dietas/crear.php" target="_blank">Creá al menos una dieta</a> para poder asignarla al lote.
             </div>
         <?php endif; ?>
-        
-        <hr style="margin: 2rem 0; border: none; border-top: 2px solid #e9ecef;">
-        
+
+        <hr class="separador-horizontal">
+
         <!-- Estado activo -->
         <div class="form-grupo">
             <label>

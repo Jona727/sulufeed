@@ -43,8 +43,8 @@ $resultado = ejecutarConsulta($query);
 <h1 class="tarjeta-titulo">🐮 Gestión de Lotes</h1>
 
 <div class="tarjeta">
-    
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+
+    <div class="seccion-header">
         <p>Administrá los lotes/tropas de animales en el feedlot.</p>
         <a href="crear.php" class="btn btn-primario">➕ Crear Nuevo Lote</a>
     </div>
@@ -82,25 +82,25 @@ $resultado = ejecutarConsulta($query);
                             <td><?php echo htmlspecialchars($lote['campo_nombre']); ?></td>
                             <td><?php echo htmlspecialchars($lote['categoria']); ?></td>
                             <td>
-                                <strong style="font-size: 1.1rem; color: #2c5530;">
+                                <strong class="texto-destacado-lote">
                                     <?php echo $animales_presentes; ?>
                                 </strong>
                                 <?php if ($animales_presentes != $lote['cantidad_inicial']): ?>
-                                    <small style="color: #666;">
+                                    <small class="etiqueta-resumen">
                                         (inicial: <?php echo $lote['cantidad_inicial']; ?>)
                                     </small>
                                 <?php endif; ?>
                             </td>
                             <td>
                                 <?php if ($lote['dieta_nombre']): ?>
-                                    <span style="color: #2c5530;">✓ <?php echo htmlspecialchars($lote['dieta_nombre']); ?></span>
+                                    <span class="texto-exito">✓ <?php echo htmlspecialchars($lote['dieta_nombre']); ?></span>
                                 <?php else: ?>
-                                    <span style="color: #dc3545;">⚠ Sin dieta</span>
+                                    <span class="texto-peligro">⚠ Sin dieta</span>
                                 <?php endif; ?>
                             </td>
                             <td><?php echo formatearFecha($lote['fecha_inicio']); ?></td>
                             <td>
-                                <span style="background: #e3f2fd; padding: 0.3rem 0.8rem; border-radius: 20px; font-weight: 600;">
+                                <span class="badge-dias">
                                     <?php echo $dias_engorde; ?> días
                                 </span>
                             </td>
@@ -156,34 +156,34 @@ $resultado = ejecutarConsulta($query);
     }
     ?>
     
-    <div class="tarjeta" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
+    <div class="tarjeta tarjeta-resumen">
         <h2 class="tarjeta-titulo">📊 Resumen</h2>
-        
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
-            
-            <div style="text-align: center;">
-                <div style="font-size: 2.5rem; color: #2c5530; font-weight: bold;">
+
+        <div class="resumen-grid">
+
+            <div class="resumen-item">
+                <div class="valor-resumen">
                     <?php echo $lotes_activos; ?>
                 </div>
-                <div style="color: #666;">Lotes Activos</div>
+                <div class="etiqueta-resumen">Lotes Activos</div>
             </div>
-            
-            <div style="text-align: center;">
-                <div style="font-size: 2.5rem; color: #2c5530; font-weight: bold;">
+
+            <div class="resumen-item">
+                <div class="valor-resumen">
                     <?php echo $total_animales; ?>
                 </div>
-                <div style="color: #666;">Animales en Feedlot</div>
+                <div class="etiqueta-resumen">Animales en Feedlot</div>
             </div>
-            
+
             <?php if ($lotes_sin_dieta > 0): ?>
-            <div style="text-align: center;">
-                <div style="font-size: 2.5rem; color: #dc3545; font-weight: bold;">
+            <div class="resumen-item">
+                <div class="valor-resumen-peligro">
                     <?php echo $lotes_sin_dieta; ?>
                 </div>
-                <div style="color: #666;">⚠ Lotes sin Dieta</div>
+                <div class="etiqueta-resumen">⚠ Lotes sin Dieta</div>
             </div>
             <?php endif; ?>
-            
+
         </div>
     </div>
 <?php endif; ?>

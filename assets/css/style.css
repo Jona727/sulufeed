@@ -698,3 +698,164 @@ table tbody tr:hover {
     font-size: 1.2rem;
     color: #666;
 }
+
+/* ========================================
+   MÓDULO LOTES - ESTILOS ESPECÍFICOS
+======================================== */
+
+/* Header de secciones con acciones */
+.seccion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+/* Grid de información general */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Grid de indicadores */
+.indicadores-grid-detalle {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Tarjeta de resumen con fondo degradado */
+.tarjeta-resumen {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+/* Separador horizontal estilizado */
+.separador-horizontal {
+    margin: 2rem 0;
+    border: none;
+    border-top: 2px solid #e9ecef;
+}
+
+/* Sección con título y contenido */
+.seccion-titulo {
+    color: #2c5530;
+    margin-bottom: 1rem;
+}
+
+.seccion-titulo-small {
+    color: #2c5530;
+    margin-bottom: 0.5rem;
+}
+
+/* Badge de días de engorde */
+.badge-dias {
+    background: #e3f2fd;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-weight: 600;
+    display: inline-block;
+}
+
+/* Texto destacado en lotes */
+.texto-destacado-lote {
+    font-size: 1.1rem;
+    color: #2c5530;
+}
+
+/* Valor grande de resumen */
+.valor-resumen {
+    font-size: 2.5rem;
+    color: #2c5530;
+    font-weight: bold;
+}
+
+.valor-resumen-peligro {
+    font-size: 2.5rem;
+    color: #dc3545;
+    font-weight: bold;
+}
+
+/* Etiqueta de resumen */
+.etiqueta-resumen {
+    color: #666;
+}
+
+/* Información de campo pequeño */
+.info-pequeña {
+    color: #999;
+}
+
+/* Estado inline con margen */
+.estado-inline {
+    font-size: 0.9rem;
+    margin-left: 1rem;
+}
+
+/* Lista de errores en mensajes */
+.mensaje-lista {
+    margin: 0.5rem 0 0 1.5rem;
+}
+
+/* Texto vigente en color verde */
+.texto-vigente {
+    color: #28a745;
+    font-weight: 600;
+}
+
+/* Flex container para dieta */
+.dieta-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Colores para niveles de sobrante */
+.nivel-sin-sobras {
+    color: #28a745;
+    font-weight: 600;
+}
+
+.nivel-pocas-sobras {
+    color: #ffc107;
+    font-weight: 600;
+}
+
+.nivel-normal {
+    color: #17a2b8;
+    font-weight: 600;
+}
+
+.nivel-muchas-sobras {
+    color: #dc3545;
+    font-weight: 600;
+}
+
+/* Colores para tipos de movimiento */
+.movimiento-positivo {
+    color: #28a745;
+    font-weight: 600;
+}
+
+.movimiento-negativo {
+    color: #dc3545;
+    font-weight: 600;
+}
+
+.movimiento-neutral {
+    color: #17a2b8;
+    font-weight: 600;
+}
+
+/* Grid de resumen con centrado */
+.resumen-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.resumen-item {
+    text-align: center;
+}

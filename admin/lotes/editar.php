@@ -160,16 +160,16 @@ include '../../includes/header.php';
     <?php if (!empty($errores)): ?>
         <div class="mensaje mensaje-error">
             <strong>Se encontraron los siguientes errores:</strong>
-            <ul style="margin: 0.5rem 0 0 1.5rem;">
+            <ul class="mensaje-lista">
                 <?php foreach ($errores as $error): ?>
                     <li><?php echo $error; ?></li>
                 <?php endforeach; ?>
             </ul>
         </div>
     <?php endif; ?>
-    
-    <div class="mensaje mensaje-info" style="margin-bottom: 1.5rem;">
-        ℹ️ <strong>Atención:</strong> Los cambios en la cantidad inicial no afectan los movimientos 
+
+    <div class="mensaje mensaje-info mb-1">
+        ℹ️ <strong>Atención:</strong> Los cambios en la cantidad inicial no afectan los movimientos
         ya registrados. Para ajustar animales presentes, usá el módulo de movimientos.
     </div>
     
@@ -252,25 +252,25 @@ include '../../includes/header.php';
         
         <!-- Información adicional -->
         <div class="form-grupo">
-            <small style="color: #666;">
+            <small class="etiqueta-resumen">
                 <strong>Creado:</strong> <?php echo formatearFecha($lote['fecha_creacion']); ?>
                 <?php if ($lote['fecha_actualizacion']): ?>
                     | <strong>Última actualización:</strong> <?php echo formatearFecha($lote['fecha_actualizacion']); ?>
                 <?php endif; ?>
             </small>
         </div>
-        
-        <hr style="margin: 2rem 0; border: none; border-top: 2px solid #e9ecef;">
-        
-        <h3 style="color: #2c5530; margin-bottom: 1rem;">📋 Gestión de Dieta</h3>
-        
+
+        <hr class="separador-horizontal">
+
+        <h3 class="seccion-titulo">📋 Gestión de Dieta</h3>
+
         <?php if ($dieta_vigente): ?>
-            <div class="mensaje mensaje-info" style="margin-bottom: 1.5rem;">
+            <div class="mensaje mensaje-info mb-1">
                 📌 <strong>Dieta actual:</strong> <?php echo htmlspecialchars($dieta_vigente['dieta_nombre']); ?>
                 <br>Asignada desde: <?php echo formatearFecha($dieta_vigente['fecha_desde']); ?>
             </div>
         <?php else: ?>
-            <div class="mensaje mensaje-info" style="margin-bottom: 1.5rem;">
+            <div class="mensaje mensaje-info mb-1">
                 ⚠️ Este lote no tiene dieta asignada actualmente.
             </div>
         <?php endif; ?>
@@ -323,9 +323,9 @@ include '../../includes/header.php';
                 <a href="../dietas/crear.php" target="_blank">Creá al menos una dieta</a> para poder asignarla al lote.
             </div>
         <?php endif; ?>
-        
-        <hr style="margin: 2rem 0; border: none; border-top: 2px solid #e9ecef;">
-        
+
+        <hr class="separador-horizontal">
+
         <!-- Estado activo -->
         <div class="form-grupo">
             <label>
@@ -385,11 +385,11 @@ $historial_dietas = ejecutarConsulta($query_historial);
                         <td><strong><?php echo htmlspecialchars($hist['dieta_nombre']); ?></strong></td>
                         <td><?php echo formatearFecha($hist['fecha_desde']); ?></td>
                         <td>
-                            <?php 
+                            <?php
                             if ($hist['fecha_hasta']) {
                                 echo formatearFecha($hist['fecha_hasta']);
                             } else {
-                                echo '<span style="color: #28a745; font-weight: 600;">Vigente</span>';
+                                echo '<span class="texto-vigente">Vigente</span>';
                             }
                             ?>
                         </td>
